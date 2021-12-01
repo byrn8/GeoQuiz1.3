@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.geoquiz13">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GeoQuiz13">
+        <activity
+            android:name=".ResultScreen"
+            android:exported="false" />
+        <activity
+            android:name=".InsaneQuestions"
+            android:exported="false" />
+        <activity
+            android:name=".HardQuestions"
+            android:exported="false" />
+        <activity
+            android:name=".NormalQuestions"
+            android:exported="false" />
+        <activity
+            android:name=".EasyQuestions"
+            android:exported="false" />
+        <activity
+            android:name=".InformationSheet"
+            android:exported="false" />
+        <activity
+            android:name=".LeaderBoard"
+            android:exported="false" />
+        <activity
+            android:name=".DifficultySelection"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
