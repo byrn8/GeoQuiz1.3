@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GeoQuiz1.3</string>
+    <string name="instructions">Welcome to GeoQuiz! This quiz app is designed to test your
+    knowledge on Geography. The app has four different difficulties that vary from "Easy"
+    to "Insane" so regardless of your knowledge in the subject you will be able to have
+    a fun experience testing yourself. To start the quiz click the "Start" button at the
+    bottom of the page. To view the leaderboard click the "Leaderboard" button.</string>
 </resources>

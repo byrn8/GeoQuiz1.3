@@ -15,19 +15,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        help = findViewById(R.id.help_button);
-        help.setOnClickListener(v -> openHelpPage());
-
         leaderboard = findViewById(R.id.leaderboard_button);
         leaderboard.setOnClickListener(v -> openLeaderboardPage());
 
         start = findViewById(R.id.start_button);
         start.setOnClickListener(v -> openDifficultyPage());
-    }
-
-    private void openHelpPage() {
-        Intent in = new Intent(this, InformationSheet.class);
-        startActivity(in);
     }
 
     private void openLeaderboardPage() {

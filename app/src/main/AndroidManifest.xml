@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GeoQuiz13">
         <activity
-            android:name=".ResultScreen"
-            android:exported="false" />
-        <activity
             android:name=".InsaneQuestions"
             android:exported="false" />
         <activity
@@ -23,9 +20,6 @@
             android:exported="false" />
         <activity
             android:name=".EasyQuestions"
-            android:exported="false" />
-        <activity
-            android:name=".InformationSheet"
             android:exported="false" />
         <activity
             android:name=".LeaderBoard"

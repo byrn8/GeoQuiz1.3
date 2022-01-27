@@ -21,7 +21,7 @@ public class NormalQuestions extends AppCompatActivity {
     int questionNumber, quizScore;
     int questionCounter = 0;
 
-    boolean isRunning;
+    boolean isRunning; //Used to correct various errors found in the code
 
     private TextView question, timer, score;
     private Button button1, button2, button3, button4, next;
@@ -43,36 +43,36 @@ public class NormalQuestions extends AppCompatActivity {
         button4 = findViewById(R.id.option4);
         next = findViewById(R.id.next_button);
 
-        addQuestion();
+        addQuestion(); //This method holds the values for the questions
         questionNumber = questionList.size();
-        createQuestion();
+        createQuestion(); //This method displays the questions on screen
 
         button1.setOnClickListener(v -> {
             questionTimer.cancel();
             if("option1" == currentQuestion.getAnswer() && isRunning == true) {
-                button1.setBackgroundColor(Color.GREEN);
-                Toast.makeText(NormalQuestions.this, "Correct", Toast.LENGTH_SHORT).show();
+                button1.setBackgroundColor(Color.GREEN); //Sets the correct button to colour green (if user selected correct answer)
+                Toast.makeText(NormalQuestions.this, "Correct", Toast.LENGTH_SHORT).show(); //output correct toast
                 quizScore++;
-                isRunning = false;
+                isRunning = false; //Boolean user to confirm whether a user has answered already
             }
             else if (isRunning == true) {
-                button1.setBackgroundColor(Color.RED);
-                Toast.makeText(NormalQuestions.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                button1.setBackgroundColor(Color.RED); //Sets the incorrect button to colour red
+                Toast.makeText(NormalQuestions.this, "Incorrect", Toast.LENGTH_SHORT).show(); //output incorrect toast
 
                 if("option2" == currentQuestion.getAnswer()) {
-                    button2.setBackgroundColor(Color.GREEN);
+                    button2.setBackgroundColor(Color.GREEN); //Sets the correct button to colour green (if user selected incorrect answer)
                 }
                 else if("option3" == currentQuestion.getAnswer()) {
-                    button3.setBackgroundColor(Color.GREEN);
+                    button3.setBackgroundColor(Color.GREEN); //Sets the correct button to colour green (if user selected incorrect answer)
                 }
                 else {
-                    button4.setBackgroundColor(Color.GREEN);
+                    button4.setBackgroundColor(Color.GREEN); //Sets the correct button to colour green (if user selected incorrect answer)
                 }
                 isRunning = false;
             }
         });
 
-        button2.setOnClickListener(v -> {
+        button2.setOnClickListener(v -> { //Check button 1 for comments about this
             questionTimer.cancel();
             if("option2" == currentQuestion.getAnswer() && isRunning == true) {
                 button2.setBackgroundColor(Color.GREEN);
@@ -97,7 +97,7 @@ public class NormalQuestions extends AppCompatActivity {
             }
         });
 
-        button3.setOnClickListener(v -> {
+        button3.setOnClickListener(v -> { //Check button 1 for comments about this
             questionTimer.cancel();
             if("option3" == currentQuestion.getAnswer() && isRunning == true) {
                 button3.setBackgroundColor(Color.GREEN);
@@ -122,7 +122,7 @@ public class NormalQuestions extends AppCompatActivity {
             }
         });
 
-        button4.setOnClickListener(v -> {
+        button4.setOnClickListener(v -> { //Check button 1 for comments about this
             questionTimer.cancel();
             if("option4" == currentQuestion.getAnswer() && isRunning == true) {
                 button4.setBackgroundColor(Color.GREEN);
@@ -149,37 +149,39 @@ public class NormalQuestions extends AppCompatActivity {
 
         next.setOnClickListener(v -> {
             if (questionCounter == questionNumber - 1) {
-                next.setOnClickListener(x -> openResultsPage());
+                next.setOnClickListener(x -> openMainActivity());
+                //displays the results screen when the final question ahs been answered
             }
             if (isRunning == true) {
                 Toast.makeText(NormalQuestions.this, "You need to select an answer!", Toast.LENGTH_SHORT).show();
+                //displays a toast if the user clicks 'next' before selecting an answer
             }
             else {
-                questionTimer.cancel();
-                createQuestion();
+                questionTimer.cancel(); //terminates the timer
+                createQuestion(); //creates a new question if a user has selected an answer
             }
         });
     }
 
-    private void openResultsPage() {
-        Intent in = new Intent(this, ResultScreen.class);
-        startActivity(in);
+    private void openMainActivity() {
+        Intent in = new Intent(this, MainActivity.class);
+        startActivity(in); //Send user to home page when quiz is finished
     }
 
     private void createQuestion() {
 
-        score.setText(quizScore + "/10");
+        score.setText(quizScore + "/10"); //updates the user score for every question
 
         isRunning = true;
 
-        button1.setBackgroundColor(Color.BLUE);
-        button2.setBackgroundColor(Color.BLUE);
-        button3.setBackgroundColor(Color.BLUE);
-        button4.setBackgroundColor(Color.BLUE);
+        button1.setBackgroundColor(Color.parseColor("#FF03DAC5")); //resets the background colour for new questions
+        button2.setBackgroundColor(Color.parseColor("#FF03DAC5"));
+        button3.setBackgroundColor(Color.parseColor("#FF03DAC5"));
+        button4.setBackgroundColor(Color.parseColor("#FF03DAC5"));
 
         qTimer();
 
-        if (questionCounter < questionNumber) {
+        if (questionCounter < questionNumber) { //updates page with new question
             currentQuestion = questionList.get(questionCounter);
             question.setText(currentQuestion.getQuestion());
             button1.setText(currentQuestion.getOption1());
@@ -197,38 +199,38 @@ public class NormalQuestions extends AppCompatActivity {
         questionTimer = new CountDownTimer(11000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) { ;
-                timer.setText("" + millisUntilFinished / 1000);
+                timer.setText("" + millisUntilFinished / 1000); //Show timer in seconds
             }
 
             @Override
             public void onFinish() {
                 isRunning = false;
                 if("option1" == currentQuestion.getAnswer()) {
-                    button1.setBackgroundColor(Color.GREEN);
+                    button1.setBackgroundColor(Color.GREEN); //If option 1 was correct change colour to green
                 }
                 else if("option2" == currentQuestion.getAnswer()) {
-                    button2.setBackgroundColor(Color.GREEN);
+                    button2.setBackgroundColor(Color.GREEN); //If option 2 was correct change colour to green
                 }
                 else if("option3" == currentQuestion.getAnswer()) {
-                    button3.setBackgroundColor(Color.GREEN);
+                    button3.setBackgroundColor(Color.GREEN); //If option 3 was correct change colour to green
                 }
                 else if("option4" == currentQuestion.getAnswer()) {
-                    button4.setBackgroundColor(Color.GREEN);
+                    button4.setBackgroundColor(Color.GREEN); //If option 4 was correct change colour to green
                 }
             }
         }.start();
     }
 
     private void addQuestion() {
-        questionList.add(new QuestionTemplate("What is the capital of Poland?", "Krakow", "Warsaw", "Berlin", "London", "option2"));
-        questionList.add(new QuestionTemplate("What is the capital of Germany?", "Bremen", "Berlin", "Bavaria", "Frankfurt", "option2"));
-        questionList.add(new QuestionTemplate("What is the capital of Czechia?", "Prague", "Kiev", "Bratislava", "Danube", "option1"));
-        questionList.add(new QuestionTemplate("What is the capital of Australia?", "Perth", "Sydney", "Melbourne", "Canberra", "option4"));
-        questionList.add(new QuestionTemplate("What is the capital of Canada?", "Vancouver", "Calgary", "Ottawa", "Edmonton", "option3"));
-        questionList.add(new QuestionTemplate("What is the capital of Egypt?", "Cairo", "Amman", "Tripoli", "Riyadh", "option1"));
-        questionList.add(new QuestionTemplate("What is the capital of Peru?", "Lima", "Caracas", "San Tiago", "Havana", "option1"));
-        questionList.add(new QuestionTemplate("What is the capital of New Zealand?", "Auckland", "Hamilton", "Wellington", "Brisbane", "option3"));
-        questionList.add(new QuestionTemplate("What is the capital of Ireland?", "Limerick", "Belfast", "Dublin", "Cardiff", "option3"));
-        questionList.add(new QuestionTemplate("What is the capital of Spain?", "Rome", "Barcelona", "Lisbon", "Madrid", "option4"));
+        questionList.add(new QuestionTemplate("What is the capital of Finland?", "Helsinki", "Oulu", "Gothenburg", "Bergen", "option1"));
+        questionList.add(new QuestionTemplate("What is the capital of Turkey?", "Athens", "Ankara", "Beirut", "Istanbul", "option2"));
+        questionList.add(new QuestionTemplate("What is the capital of Argentina?", "Montevideo", "Cordoba", "Buenos Aires", "Accra", "option3"));
+        questionList.add(new QuestionTemplate("What is the capital of Indonesia?", "Brunei", "Java", "Sumatra", "Jakarta", "option4"));
+        questionList.add(new QuestionTemplate("What is the capital of Bangladesh?", "Dhaka", "Colombo", "Muscat", "Kolkata", "option1"));
+        questionList.add(new QuestionTemplate("What is the capital of Cuba?", "Kingston", "Washington", "Cancun", "Havana", "option4"));
+        questionList.add(new QuestionTemplate("What is the capital of Chile?", "San Jose", "Quito", "Temuco", "Santiago", "option4"));
+        questionList.add(new QuestionTemplate("What is the capital of Malaysia?", "Manila", "Kuala Lumpur", "Bangkok", "Hanoi", "option2"));
+        questionList.add(new QuestionTemplate("What is the capital of Romania?", "Budapest", "Bucharest", "Bratislava", "Minsk", "option2"));
+        questionList.add(new QuestionTemplate("What is the capital of Austria?", "Munich", "Zurich", "Vienna", "Sofia", "option3"));
     }
 }

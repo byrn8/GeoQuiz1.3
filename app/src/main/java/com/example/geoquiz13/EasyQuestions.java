@@ -47,26 +47,26 @@ public class EasyQuestions extends AppCompatActivity {
         questionNumber = questionList.size(); //
         createQuestion(); //This method displays the questions on screen
 
-        button1.setOnClickListener(v -> { //Used to check weather button 1 is correct/incorrect if a user selects it
+        button1.setOnClickListener(v -> {
             questionTimer.cancel();
             if("option1" == currentQuestion.getAnswer() && isRunning == true) {
-                button1.setBackgroundColor(Color.GREEN);
-                Toast.makeText(EasyQuestions.this, "Correct", Toast.LENGTH_SHORT).show();
+                button1.setBackgroundColor(Color.GREEN); //Sets the correct button to colour green (if user selected correct answer)
+                Toast.makeText(EasyQuestions.this, "Correct", Toast.LENGTH_SHORT).show(); //output correct toast
                 quizScore++;
-                isRunning = false;
+                isRunning = false; //Boolean user to confirm whether a user has answered already
             }
             else if (isRunning == true) {
-                button1.setBackgroundColor(Color.RED);
-                Toast.makeText(EasyQuestions.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                button1.setBackgroundColor(Color.RED); //Sets the incorrect button to colour red
+                Toast.makeText(EasyQuestions.this, "Incorrect", Toast.LENGTH_SHORT).show(); //output incorrect toast
 
                 if("option2" == currentQuestion.getAnswer()) {
-                    button2.setBackgroundColor(Color.GREEN);
+                    button2.setBackgroundColor(Color.GREEN); //Sets the correct button to colour green (if user selected incorrect answer)
                 }
                 else if("option3" == currentQuestion.getAnswer()) {
-                    button3.setBackgroundColor(Color.GREEN);
+                    button3.setBackgroundColor(Color.GREEN); //Sets the correct button to colour green (if user selected incorrect answer)
                 }
                 else {
-                    button4.setBackgroundColor(Color.GREEN);
+                    button4.setBackgroundColor(Color.GREEN); //Sets the correct button to colour green (if user selected incorrect answer)
                 }
                 isRunning = false;
             }
@@ -149,7 +149,7 @@ public class EasyQuestions extends AppCompatActivity {
 
         next.setOnClickListener(v -> {
             if (questionCounter == questionNumber - 1) {
-                next.setOnClickListener(x -> openResultsPage());
+                next.setOnClickListener(x -> openMainActivity());
                 //displays the results screen when the final question ahs been answered
             }
             if (isRunning == true) {
@@ -163,9 +163,9 @@ public class EasyQuestions extends AppCompatActivity {
         });
     }
 
-    private void openResultsPage() { //method for opening the results page
-        Intent in = new Intent(this, ResultScreen.class);
-        startActivity(in);
+    private void openMainActivity() {
+        Intent in = new Intent(this, MainActivity.class);
+        startActivity(in); //Send user to home page when quiz is finished
     }
 
     private void createQuestion() {
@@ -174,10 +174,10 @@ public class EasyQuestions extends AppCompatActivity {
 
         isRunning = true;
 
-        button1.setBackgroundColor(Color.BLUE); //resets the background colour for new questions
-        button2.setBackgroundColor(Color.BLUE);
-        button3.setBackgroundColor(Color.BLUE);
-        button4.setBackgroundColor(Color.BLUE);
+        button1.setBackgroundColor(Color.parseColor("#FF03DAC5")); //resets the background colour for new questions
+        button2.setBackgroundColor(Color.parseColor("#FF03DAC5"));
+        button3.setBackgroundColor(Color.parseColor("#FF03DAC5"));
+        button4.setBackgroundColor(Color.parseColor("#FF03DAC5"));
 
         qTimer(); //calls timer
 
@@ -199,23 +199,23 @@ public class EasyQuestions extends AppCompatActivity {
         questionTimer = new CountDownTimer(11000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) { ;
-                timer.setText("" + millisUntilFinished / 1000);
+                timer.setText("" + millisUntilFinished / 1000); //Show timer in seconds
             }
 
             @Override
             public void onFinish() {
                 isRunning = false;
                 if("option1" == currentQuestion.getAnswer()) {
-                    button1.setBackgroundColor(Color.GREEN);
+                    button1.setBackgroundColor(Color.GREEN); //If option 1 was correct change colour to green
                 }
                 else if("option2" == currentQuestion.getAnswer()) {
-                    button2.setBackgroundColor(Color.GREEN);
+                    button2.setBackgroundColor(Color.GREEN); //If option 2 was correct change colour to green
                 }
                 else if("option3" == currentQuestion.getAnswer()) {
-                    button3.setBackgroundColor(Color.GREEN);
+                    button3.setBackgroundColor(Color.GREEN); //If option 3 was correct change colour to green
                 }
                 else if("option4" == currentQuestion.getAnswer()) {
-                    button4.setBackgroundColor(Color.GREEN);
+                    button4.setBackgroundColor(Color.GREEN); //If option 4 was correct change colour to green
                 }
             }
         }.start();
@@ -228,7 +228,7 @@ public class EasyQuestions extends AppCompatActivity {
         questionList.add(new QuestionTemplate("What is the capital of Australia?", "Perth", "Sydney", "Melbourne", "Canberra", "option4"));
         questionList.add(new QuestionTemplate("What is the capital of Canada?", "Vancouver", "Calgary", "Ottawa", "Edmonton", "option3"));
         questionList.add(new QuestionTemplate("What is the capital of Egypt?", "Cairo", "Amman", "Tripoli", "Riyadh", "option1"));
-        questionList.add(new QuestionTemplate("What is the capital of Peru?", "Lima", "Caracas", "San Tiago", "Havana", "option1"));
+        questionList.add(new QuestionTemplate("What is the capital of Peru?", "Lima", "Caracas", "Santiago", "Havana", "option1"));
         questionList.add(new QuestionTemplate("What is the capital of New Zealand?", "Auckland", "Hamilton", "Wellington", "Brisbane", "option3"));
         questionList.add(new QuestionTemplate("What is the capital of Ireland?", "Limerick", "Belfast", "Dublin", "Cardiff", "option3"));
         questionList.add(new QuestionTemplate("What is the capital of Spain?", "Rome", "Barcelona", "Lisbon", "Madrid", "option4"));

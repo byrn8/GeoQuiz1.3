@@ -9,10 +9,13 @@
     <Button
         android:id="@+id/easy_button"
         android:layout_width="380dp"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#0000FF"
+        android:backgroundTint="#FF03DAC5"
+        android:fontFamily="sans-serif-light"
         android:text="Easy"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toTopOf="@+id/normal_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -20,10 +23,13 @@
     <Button
         android:id="@+id/normal_button"
         android:layout_width="380dp"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#0000FF"
+        android:backgroundTint="#FF03DAC5"
+        android:fontFamily="sans-serif-light"
         android:text="Normal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toTopOf="@+id/hard_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -31,10 +37,13 @@
     <Button
         android:id="@+id/hard_button"
         android:layout_width="380dp"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#0000FF"
+        android:backgroundTint="#FF03DAC5"
+        android:fontFamily="sans-serif-light"
         android:text="Hard"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toTopOf="@+id/insane_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -42,10 +51,13 @@
     <Button
         android:id="@+id/insane_button"
         android:layout_width="380dp"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#0000FF"
+        android:backgroundTint="#FF03DAC5"
+        android:fontFamily="sans-serif-light"
         android:text="Insane"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
